@@ -23,6 +23,7 @@ public class splashScreenWelcome extends javax.swing.JFrame {
      * Creates new form splashScreenWelcome
      */
     public splashScreenWelcome() {
+        
         al = new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent e){
@@ -34,18 +35,19 @@ public class splashScreenWelcome extends javax.swing.JFrame {
                }
            }
          };
+       
             t =  new Timer(10,al);
-               initComponents();
+                initComponents();
                     this.setVisible(true);
                         t.start();
     }
-
+    
      private void mostrarVentana(){
             jfprincipal app1 = new jfprincipal();
                  this.dispose();
                     app1.setVisible(true);
         }
-    
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -58,11 +60,12 @@ public class splashScreenWelcome extends javax.swing.JFrame {
         jpPrincipal = new javax.swing.JPanel();
         jlbCargando = new javax.swing.JLabel();
         jpbCargando = new javax.swing.JProgressBar();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(850, 450));
         setMinimumSize(new java.awt.Dimension(850, 450));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setUndecorated(true);
 
         jpPrincipal.setBackground(new java.awt.Color(0, 100, 145));
 
@@ -71,8 +74,14 @@ public class splashScreenWelcome extends javax.swing.JFrame {
         jlbCargando.setForeground(new java.awt.Color(255, 255, 255));
         jlbCargando.setText("CARGANDO...");
 
-        jpbCargando.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 255, 204)));
+        jpbCargando.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jpbCargando.setStringPainted(true);
+
+        try{
+            jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logoDominos.jpg"))); // NOI18N
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
 
         javax.swing.GroupLayout jpPrincipalLayout = new javax.swing.GroupLayout(jpPrincipal);
         jpPrincipal.setLayout(jpPrincipalLayout);
@@ -81,23 +90,38 @@ public class splashScreenWelcome extends javax.swing.JFrame {
             .addGroup(jpPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jpbCargando, javax.swing.GroupLayout.DEFAULT_SIZE, 838, Short.MAX_VALUE)
+                    .addComponent(jpbCargando, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jpPrincipalLayout.createSequentialGroup()
                         .addComponent(jlbCargando, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 511, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jpPrincipalLayout.createSequentialGroup()
+                .addGap(305, 305, 305)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jpPrincipalLayout.setVerticalGroup(
             jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpPrincipalLayout.createSequentialGroup()
-                .addContainerGap(333, Short.MAX_VALUE)
+                .addContainerGap(92, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
                 .addComponent(jlbCargando, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpbCargando, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        getContentPane().add(jpPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 450));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jpPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jpPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         pack();
         setLocationRelativeTo(null);
@@ -139,8 +163,24 @@ public class splashScreenWelcome extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jlbCargando;
     private javax.swing.JPanel jpPrincipal;
     private javax.swing.JProgressBar jpbCargando;
     // End of variables declaration//GEN-END:variables
+
+    /*
+    class FondoPanel extends JPanel{
+    
+        private Image imagen;
+        
+        @Override
+        public void paint(Graphics g){
+            imagen = new ImageIcon(getClass().getResource("/com/proyectofinal/images/logoDominos.jpg")).getImage();
+            g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
+            setOpaque(false);
+            super.paint(g);
+        }
+    }*/
+    
 }
