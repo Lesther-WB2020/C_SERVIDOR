@@ -70,7 +70,7 @@ public class splashScreenWelcome extends javax.swing.JFrame {
         jpPrincipal.setBackground(new java.awt.Color(0, 100, 145));
 
         jlbCargando.setBackground(new java.awt.Color(0, 100, 145));
-        jlbCargando.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
+        jlbCargando.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
         jlbCargando.setForeground(new java.awt.Color(255, 255, 255));
         jlbCargando.setText("CARGANDO...");
 
@@ -78,7 +78,7 @@ public class splashScreenWelcome extends javax.swing.JFrame {
         jpbCargando.setStringPainted(true);
 
         try{
-            jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logoDominos.jpg"))); // NOI18N
+            jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/00_jf_principal/logoDominos.jpg"))); // NOI18N
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
@@ -88,24 +88,27 @@ public class splashScreenWelcome extends javax.swing.JFrame {
         jpPrincipalLayout.setHorizontalGroup(
             jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpPrincipalLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jpbCargando, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jpPrincipalLayout.createSequentialGroup()
-                        .addComponent(jlbCargando, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 511, Short.MAX_VALUE)))
+                        .addContainerGap()
+                        .addComponent(jpbCargando, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jpPrincipalLayout.createSequentialGroup()
+                        .addGroup(jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jpPrincipalLayout.createSequentialGroup()
+                                .addGap(332, 332, 332)
+                                .addComponent(jLabel1))
+                            .addGroup(jpPrincipalLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jlbCargando, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 337, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jpPrincipalLayout.createSequentialGroup()
-                .addGap(305, 305, 305)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jpPrincipalLayout.setVerticalGroup(
             jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpPrincipalLayout.createSequentialGroup()
-                .addContainerGap(92, Short.MAX_VALUE)
+                .addContainerGap(117, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addGap(58, 58, 58)
                 .addComponent(jlbCargando, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpbCargando, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)

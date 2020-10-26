@@ -12,6 +12,18 @@
             <url>file:${project.basedir}/lib</url>
         </repository>
     </repositories>
+    <dependencies>
+        <dependency>
+            <groupId>at.molindo</groupId>
+            <artifactId>molindo-mysql-collations-lib</artifactId>
+            <version>0.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>unknown.binary</groupId>
+            <artifactId>AbsoluteLayout</artifactId>
+            <version>SNAPSHOT</version>
+        </dependency>
+    </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>

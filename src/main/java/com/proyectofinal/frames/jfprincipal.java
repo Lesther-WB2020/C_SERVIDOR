@@ -33,156 +33,113 @@ public class jfprincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jpUp = new javax.swing.JPanel();
-        jbtnDashboard = new javax.swing.JButton();
-        jbtnMenu = new javax.swing.JButton();
         jpDown = new javax.swing.JPanel();
         jbtnProductoUno = new javax.swing.JButton();
         jbtnProductoTres = new javax.swing.JButton();
         jbtnProductoDos = new javax.swing.JButton();
-        jmbPrincipal = new javax.swing.JMenuBar();
-        jmDashboard = new javax.swing.JMenu();
-        jmiEditarDashboard = new javax.swing.JMenuItem();
-        jmMenu = new javax.swing.JMenu();
-        jmiRegistrar = new javax.swing.JMenuItem();
-        jmiEditar = new javax.swing.JMenuItem();
-        jmiEliminar = new javax.swing.JMenuItem();
+        jpUpMenuOptions = new javax.swing.JPanel();
+        jbtnDashboard1 = new javax.swing.JButton();
+        jbtnMenu1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("DOMINO´S PIZZA");
-        setBackground(new java.awt.Color(0, 0, 0));
-        setMaximumSize(new java.awt.Dimension(850, 450));
-        setMinimumSize(new java.awt.Dimension(850, 450));
+        setBackground(new java.awt.Color(255, 255, 255));
+        setMaximumSize(new java.awt.Dimension(900, 500));
+        setMinimumSize(new java.awt.Dimension(900, 500));
+        setResizable(false);
 
-        jpUp.setBackground(new java.awt.Color(0, 100, 145));
+        jpDown.setBackground(new java.awt.Color(255, 255, 255));
+        jpDown.setMaximumSize(new java.awt.Dimension(900, 500));
+        jpDown.setMinimumSize(new java.awt.Dimension(900, 500));
+        jpDown.setPreferredSize(new java.awt.Dimension(900, 500));
+        jpDown.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jbtnDashboard.setBorder(new javax.swing.border.MatteBorder(null));
-        jbtnDashboard.addActionListener(new java.awt.event.ActionListener() {
+        jbtnProductoUno.setBackground(new java.awt.Color(255, 255, 255));
+        jbtnProductoUno.setBorderPainted(false);
+        jpDown.add(jbtnProductoUno, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 540, 370));
+
+        jbtnProductoTres.setBackground(new java.awt.Color(255, 255, 255));
+        jbtnProductoTres.setBorderPainted(false);
+        jbtnProductoTres.setPreferredSize(new java.awt.Dimension(30, 15));
+        jpDown.add(jbtnProductoTres, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 290, 250, 180));
+
+        jbtnProductoDos.setBackground(new java.awt.Color(255, 255, 255));
+        jbtnProductoDos.setBorderPainted(false);
+        jpDown.add(jbtnProductoDos, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 100, 250, 180));
+
+        jpUpMenuOptions.setBackground(new java.awt.Color(0, 100, 145));
+        jpUpMenuOptions.setPreferredSize(new java.awt.Dimension(900, 70));
+
+        jbtnDashboard1.setBackground(new java.awt.Color(0, 100, 145));
+        jbtnDashboard1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/00_jf_principal/miniLogoDominos.png"))); // NOI18N
+        jbtnDashboard1.setBorder(new javax.swing.border.MatteBorder(null));
+        jbtnDashboard1.setBorderPainted(false);
+        jbtnDashboard1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnDashboardActionPerformed(evt);
             }
         });
 
-        jbtnMenu.setText("MENÚ");
-        jbtnMenu.setBorder(new javax.swing.border.MatteBorder(null));
+        jbtnMenu1.setBackground(new java.awt.Color(0, 100, 145));
+        jbtnMenu1.setBorder(new javax.swing.border.MatteBorder(null));
+        jbtnMenu1.setBorderPainted(false);
+        jbtnMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnMenuActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jpUpLayout = new javax.swing.GroupLayout(jpUp);
-        jpUp.setLayout(jpUpLayout);
-        jpUpLayout.setHorizontalGroup(
-            jpUpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpUpLayout.createSequentialGroup()
+        javax.swing.GroupLayout jpUpMenuOptionsLayout = new javax.swing.GroupLayout(jpUpMenuOptions);
+        jpUpMenuOptions.setLayout(jpUpMenuOptionsLayout);
+        jpUpMenuOptionsLayout.setHorizontalGroup(
+            jpUpMenuOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpUpMenuOptionsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jbtnDashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jbtnDashboard1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jbtnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jbtnMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(746, Short.MAX_VALUE))
+        );
+        jpUpMenuOptionsLayout.setVerticalGroup(
+            jpUpMenuOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpUpMenuOptionsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jpUpMenuOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtnDashboard1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jpUpLayout.setVerticalGroup(
-            jpUpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpUpLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jpUpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jbtnMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
-                    .addComponent(jbtnDashboard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
 
-        jpDown.setBackground(new java.awt.Color(222, 222, 222));
-
-        javax.swing.GroupLayout jpDownLayout = new javax.swing.GroupLayout(jpDown);
-        jpDown.setLayout(jpDownLayout);
-        jpDownLayout.setHorizontalGroup(
-            jpDownLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpDownLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jbtnProductoUno, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpDownLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jbtnProductoTres, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
-                    .addComponent(jbtnProductoDos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jpDownLayout.setVerticalGroup(
-            jpDownLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpDownLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jpDownLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jpDownLayout.createSequentialGroup()
-                        .addComponent(jbtnProductoDos, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jbtnProductoTres, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jbtnProductoUno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-
-        jmDashboard.setText("DASHBOARD");
-
-        jmiEditarDashboard.setText("EDITAR");
-        jmiEditarDashboard.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiEditarDashboardActionPerformed(evt);
-            }
-        });
-        jmDashboard.add(jmiEditarDashboard);
-
-        jmbPrincipal.add(jmDashboard);
-
-        jmMenu.setText("     MENU");
-
-        jmiRegistrar.setText("REGISTRAR");
-        jmiRegistrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiRegistrarActionPerformed(evt);
-            }
-        });
-        jmMenu.add(jmiRegistrar);
-
-        jmiEditar.setText("EDITAR");
-        jmMenu.add(jmiEditar);
-
-        jmiEliminar.setText("ELIMINAR");
-        jmMenu.add(jmiEliminar);
-
-        jmbPrincipal.add(jmMenu);
-
-        setJMenuBar(jmbPrincipal);
+        jpDown.add(jpUpMenuOptions, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 70));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpUp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jpDown, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jpDown, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jpUp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jpDown, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jpDown, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jmiEditarDashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiEditarDashboardActionPerformed
-        
-        
-        
-    }//GEN-LAST:event_jmiEditarDashboardActionPerformed
+    private void jbtnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnMenuActionPerformed
+
+        this.dispose();
+        jfClasificacionMenu cm = new jfClasificacionMenu();
+        cm.setVisible(true);
+
+    }//GEN-LAST:event_jbtnMenuActionPerformed
 
     private void jbtnDashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDashboardActionPerformed
-            this.dispose();
-                jfprincipal app1 = new jfprincipal();
-                    app1.setVisible(true);
+        this.dispose();
+        jfprincipal app1 = new jfprincipal();
+        app1.setVisible(true);
     }//GEN-LAST:event_jbtnDashboardActionPerformed
-
-    private void jmiRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRegistrarActionPerformed
-            this.dispose();
-                jfMenuRegistrar registrar = new jfMenuRegistrar();
-                        registrar.setVisible(true);
-    }//GEN-LAST:event_jmiRegistrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -220,13 +177,13 @@ public class jfprincipal extends javax.swing.JFrame {
     }
 
     public void setImagesToComponents(){
-        //ESTÁTICOS
+        
         //jbtnDashboard.setPressedIcon(); //para cuando se precione un botón.
-        this.setIconImage(new ImageIcon(getClass().getResource("/idm.png")).getImage());
-            jbtnDashboard.setIcon(setIconoBtn("/dashboard.jpg",jbtnDashboard));
-            
-                //TRAÍDOS DE UNA BASE DE DATOS-DASHBOARD
-                    
+        this.setIconImage(new ImageIcon(getClass().getResource("/00_jf_principal/idm.png")).getImage());
+                jbtnProductoUno.setIcon(setIconoBtn("/01_lo_mas_comprado/01.png",jbtnProductoUno));
+                    jbtnProductoDos.setIcon(setIconoBtn("/01_lo_mas_comprado/02.png",jbtnProductoDos));
+                        jbtnProductoTres.setIcon(setIconoBtn("/01_lo_mas_comprado/03.png",jbtnProductoTres));
+                            jbtnMenu1.setIcon(setIconoBtn("/00_jf_principal/iconoMenu.png",jbtnMenu1));
     }
     
     public Icon setIconoBtn(String url, JButton btn){
@@ -242,18 +199,14 @@ public class jfprincipal extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jbtnDashboard;
+    private javax.swing.JButton jbtnDashboard1;
     private javax.swing.JButton jbtnMenu;
+    private javax.swing.JButton jbtnMenu1;
     private javax.swing.JButton jbtnProductoDos;
     private javax.swing.JButton jbtnProductoTres;
     private javax.swing.JButton jbtnProductoUno;
-    private javax.swing.JMenu jmDashboard;
-    private javax.swing.JMenu jmMenu;
-    private javax.swing.JMenuBar jmbPrincipal;
-    private javax.swing.JMenuItem jmiEditar;
-    private javax.swing.JMenuItem jmiEditarDashboard;
-    private javax.swing.JMenuItem jmiEliminar;
-    private javax.swing.JMenuItem jmiRegistrar;
     private javax.swing.JPanel jpDown;
     private javax.swing.JPanel jpUp;
+    private javax.swing.JPanel jpUpMenuOptions;
     // End of variables declaration//GEN-END:variables
 }
