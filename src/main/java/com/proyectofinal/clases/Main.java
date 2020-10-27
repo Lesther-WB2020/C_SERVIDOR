@@ -5,8 +5,11 @@
  */
 package com.proyectofinal.clases;
 
+import com.proyectofinal.frames.crearCuentaEmpleado;
+import com.proyectofinal.frames.jfLoginOrCreateAcount;
 import com.proyectofinal.frames.jfprincipal;
 import com.proyectofinal.frames.splashScreenWelcome;
+import java.sql.SQLException;
 
 /**
  *
@@ -15,10 +18,14 @@ import com.proyectofinal.frames.splashScreenWelcome;
 public class Main {
     
     public static void main(String[] args){
-        splashScreenWelcome ssw = new splashScreenWelcome();
-            ssw.setVisible(true);
+        /*splashScreenWelcome ssw = new splashScreenWelcome();
+            ssw.setVisible(true);*/
         /*jfprincipal app1 = new jfprincipal();
             app1.setVisible(true);*/
+            /*jfLoginOrCreateAcount app = new jfLoginOrCreateAcount();
+                app.setVisible(true);*/
+                    crearCuentaEmpleado app = new crearCuentaEmpleado();
+                        app.setVisible(true);
     }
     
 }

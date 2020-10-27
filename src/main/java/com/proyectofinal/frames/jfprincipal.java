@@ -5,23 +5,29 @@
  */
 package com.proyectofinal.frames;
 
+import java.awt.Color;
 import java.awt.Image;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Manuel
  */
 public class jfprincipal extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form jfprincipal
      */
     public jfprincipal() {
         initComponents();
             setImagesToComponents();
+                cerrar();
     }
 
     /**
@@ -40,6 +46,7 @@ public class jfprincipal extends javax.swing.JFrame {
         jpUpMenuOptions = new javax.swing.JPanel();
         jbtnDashboard1 = new javax.swing.JButton();
         jbtnMenu1 = new javax.swing.JButton();
+        jbtnLogin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("DOMINO´S PIZZA");
@@ -55,16 +62,46 @@ public class jfprincipal extends javax.swing.JFrame {
         jpDown.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jbtnProductoUno.setBackground(new java.awt.Color(255, 255, 255));
-        jbtnProductoUno.setBorderPainted(false);
+        jbtnProductoUno.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jbtnProductoUno.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnProductoUno.setFocusPainted(false);
+        jbtnProductoUno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jbtnProductoUnoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jbtnProductoUnoMouseExited(evt);
+            }
+        });
         jpDown.add(jbtnProductoUno, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 540, 370));
 
         jbtnProductoTres.setBackground(new java.awt.Color(255, 255, 255));
-        jbtnProductoTres.setBorderPainted(false);
+        jbtnProductoTres.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jbtnProductoTres.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnProductoTres.setFocusPainted(false);
         jbtnProductoTres.setPreferredSize(new java.awt.Dimension(30, 15));
+        jbtnProductoTres.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jbtnProductoTresMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jbtnProductoTresMouseExited(evt);
+            }
+        });
         jpDown.add(jbtnProductoTres, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 290, 250, 180));
 
         jbtnProductoDos.setBackground(new java.awt.Color(255, 255, 255));
-        jbtnProductoDos.setBorderPainted(false);
+        jbtnProductoDos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jbtnProductoDos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnProductoDos.setFocusPainted(false);
+        jbtnProductoDos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jbtnProductoDosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jbtnProductoDosMouseExited(evt);
+            }
+        });
         jpDown.add(jbtnProductoDos, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 100, 250, 180));
 
         jpUpMenuOptions.setBackground(new java.awt.Color(0, 100, 145));
@@ -72,8 +109,9 @@ public class jfprincipal extends javax.swing.JFrame {
 
         jbtnDashboard1.setBackground(new java.awt.Color(0, 100, 145));
         jbtnDashboard1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/00_jf_principal/miniLogoDominos.png"))); // NOI18N
-        jbtnDashboard1.setBorder(new javax.swing.border.MatteBorder(null));
+        jbtnDashboard1.setBorder(null);
         jbtnDashboard1.setBorderPainted(false);
+        jbtnDashboard1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbtnDashboard1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnDashboardActionPerformed(evt);
@@ -81,11 +119,22 @@ public class jfprincipal extends javax.swing.JFrame {
         });
 
         jbtnMenu1.setBackground(new java.awt.Color(0, 100, 145));
-        jbtnMenu1.setBorder(new javax.swing.border.MatteBorder(null));
+        jbtnMenu1.setBorder(null);
         jbtnMenu1.setBorderPainted(false);
+        jbtnMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbtnMenu1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnMenuActionPerformed(evt);
+            }
+        });
+
+        jbtnLogin.setBackground(new java.awt.Color(0, 100, 145));
+        jbtnLogin.setBorder(null);
+        jbtnLogin.setBorderPainted(false);
+        jbtnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnLoginActionPerformed(evt);
             }
         });
 
@@ -96,18 +145,22 @@ public class jfprincipal extends javax.swing.JFrame {
             .addGroup(jpUpMenuOptionsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jbtnDashboard1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jbtnMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(746, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 679, Short.MAX_VALUE)
+                .addComponent(jbtnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jpUpMenuOptionsLayout.setVerticalGroup(
             jpUpMenuOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpUpMenuOptionsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jpUpMenuOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jbtnMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbtnDashboard1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jpUpMenuOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jbtnDashboard1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, Short.MAX_VALUE)
+                    .addGroup(jpUpMenuOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jbtnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+                        .addComponent(jbtnMenu1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         jpDown.add(jpUpMenuOptions, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 70));
@@ -140,6 +193,40 @@ public class jfprincipal extends javax.swing.JFrame {
         jfprincipal app1 = new jfprincipal();
         app1.setVisible(true);
     }//GEN-LAST:event_jbtnDashboardActionPerformed
+
+    private void jbtnProductoUnoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnProductoUnoMouseEntered
+        
+        jbtnProductoUno.setBackground(new Color(193, 193, 193));
+        
+    }//GEN-LAST:event_jbtnProductoUnoMouseEntered
+
+    private void jbtnProductoUnoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnProductoUnoMouseExited
+        jbtnProductoUno.setBackground(new Color(255,255,255));
+    }//GEN-LAST:event_jbtnProductoUnoMouseExited
+
+    private void jbtnProductoDosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnProductoDosMouseEntered
+        jbtnProductoDos.setBackground(new Color(193, 193, 193));
+    }//GEN-LAST:event_jbtnProductoDosMouseEntered
+
+    private void jbtnProductoDosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnProductoDosMouseExited
+        jbtnProductoDos.setBackground(new Color(255,255,255));
+    }//GEN-LAST:event_jbtnProductoDosMouseExited
+
+    private void jbtnProductoTresMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnProductoTresMouseEntered
+        jbtnProductoTres.setBackground(new Color(193, 193, 193));
+    }//GEN-LAST:event_jbtnProductoTresMouseEntered
+
+    private void jbtnProductoTresMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnProductoTresMouseExited
+        jbtnProductoTres.setBackground(new Color(255,255,255));
+    }//GEN-LAST:event_jbtnProductoTresMouseExited
+
+    private void jbtnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnLoginActionPerformed
+        
+        this.dispose();
+            jfLoginOrCreateAcount app = new jfLoginOrCreateAcount();
+                app.setVisible(true);
+        
+    }//GEN-LAST:event_jbtnLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -184,6 +271,7 @@ public class jfprincipal extends javax.swing.JFrame {
                     jbtnProductoDos.setIcon(setIconoBtn("/01_lo_mas_comprado/02.png",jbtnProductoDos));
                         jbtnProductoTres.setIcon(setIconoBtn("/01_lo_mas_comprado/03.png",jbtnProductoTres));
                             jbtnMenu1.setIcon(setIconoBtn("/00_jf_principal/iconoMenu.png",jbtnMenu1));
+                                jbtnLogin.setIcon(setIconoBtn("/00_jf_principal/loginIcon.png",jbtnLogin));
     }
     
     public Icon setIconoBtn(String url, JButton btn){
@@ -197,16 +285,42 @@ public class jfprincipal extends javax.swing.JFrame {
                         return iconoBtn;
     }
     
+     public void cerrar(){
+    
+        try {
+            this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+            addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosing(WindowEvent e){ //WindowEvent: import java.awt.event.WindowEvent;
+                      confirmarCerrarVentana();
+                }
+            });
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+    }
+    
+    public void confirmarCerrarVentana(){
+        Icon question;
+        question = new ImageIcon(getClass().getResource("/00_jf_principal/question.png"));
+        
+        int valor = JOptionPane.showConfirmDialog(null, "¿REALMENTE QUIERES CERRAR LA VENTANA?", "ATENCIÓN", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE,question);
+        if(valor == JOptionPane.YES_OPTION){
+            this.dispose(); 
+        }else{
+            this.setVisible(true);
+        }  
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jbtnDashboard;
     private javax.swing.JButton jbtnDashboard1;
-    private javax.swing.JButton jbtnMenu;
+    private javax.swing.JButton jbtnLogin;
     private javax.swing.JButton jbtnMenu1;
     private javax.swing.JButton jbtnProductoDos;
     private javax.swing.JButton jbtnProductoTres;
     private javax.swing.JButton jbtnProductoUno;
     private javax.swing.JPanel jpDown;
-    private javax.swing.JPanel jpUp;
     private javax.swing.JPanel jpUpMenuOptions;
     // End of variables declaration//GEN-END:variables
 }

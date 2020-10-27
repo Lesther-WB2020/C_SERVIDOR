@@ -10,9 +10,13 @@ import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -26,9 +30,38 @@ public class jfClasificacionMenu extends javax.swing.JFrame {
      */
     public jfClasificacionMenu() {
         initComponents();
-        setearIconos();
+            setearIconos();
+                cerrar();
     }
 
+    public void cerrar(){
+    
+        try {
+            this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+            addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosing(WindowEvent e){ //WindowEvent: import java.awt.event.WindowEvent;
+                      confirmarCerrarVentana();
+                }
+            });
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+    }
+    
+    public void confirmarCerrarVentana(){
+        Icon question;
+        question = new ImageIcon(getClass().getResource("/00_jf_principal/question.png"));
+        
+        int valor = JOptionPane.showConfirmDialog(null, "¿REALMENTE QUIERES CERRAR LA VENTANA?", "ATENCIÓN", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE,question);
+        if(valor == JOptionPane.YES_OPTION){
+            this.dispose(); 
+                jfprincipal app = new jfprincipal();
+                    app.setVisible(true);
+        }
+    }
+    
     class jPanelGradient extends JPanel{
         
         @Override
@@ -152,7 +185,7 @@ public class jfClasificacionMenu extends javax.swing.JFrame {
             }
         });
 
-        jbtnVolver.setBackground(new java.awt.Color(185, 238, 226));
+        jbtnVolver.setBackground(new java.awt.Color(148, 214, 216));
         jbtnVolver.setBorder(null);
         jbtnVolver.setBorderPainted(false);
         jbtnVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -168,17 +201,18 @@ public class jfClasificacionMenu extends javax.swing.JFrame {
         jpanelCategoriasLayout.setHorizontalGroup(
             jpanelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpanelCategoriasLayout.createSequentialGroup()
-                .addGap(119, 119, 119)
                 .addGroup(jpanelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jbtnBebidas, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbtnDonCalzzone, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbtnAdicionales, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbtnPizzas, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpanelCategoriasLayout.createSequentialGroup()
+                        .addGap(119, 119, 119)
+                        .addGroup(jpanelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jbtnBebidas, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbtnDonCalzzone, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbtnAdicionales, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbtnPizzas, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jpanelCategoriasLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jbtnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(131, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpanelCategoriasLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jbtnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
         );
         jpanelCategoriasLayout.setVerticalGroup(
             jpanelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

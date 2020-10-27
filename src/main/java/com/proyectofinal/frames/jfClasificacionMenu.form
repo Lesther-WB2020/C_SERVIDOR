@@ -50,19 +50,22 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jbtnBebidas" min="-2" pref="650" max="-2" attributes="0"/>
-                      <Component id="jbtnDonCalzzone" min="-2" pref="650" max="-2" attributes="0"/>
-                      <Component id="jbtnAdicionales" min="-2" pref="650" max="-2" attributes="0"/>
-                      <Component id="jbtnPizzas" min="-2" pref="650" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jbtnBebidas" min="-2" pref="650" max="-2" attributes="0"/>
+                              <Component id="jbtnDonCalzzone" min="-2" pref="650" max="-2" attributes="0"/>
+                              <Component id="jbtnAdicionales" min="-2" pref="650" max="-2" attributes="0"/>
+                              <Component id="jbtnPizzas" min="-2" pref="650" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jbtnVolver" min="-2" pref="87" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace pref="131" max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jbtnVolver" min="-2" pref="87" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -199,7 +202,7 @@
         <Component class="javax.swing.JButton" name="jbtnVolver">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="e2" green="ee" red="b9" type="rgb"/>
+              <Color blue="d8" green="d6" red="94" type="rgb"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>

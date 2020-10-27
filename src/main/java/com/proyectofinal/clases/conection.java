@@ -50,7 +50,7 @@ public class conection {
         try{
             //newImputStream lee una archivo en cierto path y lo cargara en la variable de tipo InputStream
             // in se dirige a la ruta especificada obtiene el path 
-            in = Files.newInputStream(FileSystems.getDefault().getPath("C:\\propertiesProyectoFinal\\db_props.properties"));
+            in = Files.newInputStream(FileSystems.getDefault().getPath("C:\\proyectoFinalProgramacionIIProperties\\db_props.properties"));
             props.load(in);
             in.close();
             
