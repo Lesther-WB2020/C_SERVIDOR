@@ -5,12 +5,14 @@
  */
 package com.proyectofinal.clases;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Manuel
  */
 public class empleado {
-
+    
     private int id;
     private String usuario;
     private String nombre;
@@ -19,6 +21,8 @@ public class empleado {
     private String password;
     private String ultimaSesion;
     private String tipoEmpleado;
+    private String rutaFoto;
+    private ImageIcon img;
     
             //SETTERS AND GETTERS
             /**
@@ -133,4 +137,32 @@ public class empleado {
                 this.tipoEmpleado = tipoEmpleado;
             }
     
+            /**
+             * @return the rutaFoto
+             */
+            public String getRutaFoto() {
+                return rutaFoto;
+            }
+
+            /**
+             * @param rutaFoto the rutaFoto to set
+             */
+            public void setRutaFoto(String rutaFoto) {
+                this.rutaFoto = rutaFoto;
+            }
+            
+            /**
+             * @return the img
+             */
+            public ImageIcon getImg() {
+                return img;
+            }
+
+            /**
+             * @param img the img to set
+             */
+            public void setImg(ImageIcon img) {
+                this.img = img;
+            }
+
 }

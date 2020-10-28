@@ -5,6 +5,7 @@
  */
 package com.proyectofinal.frames;
 
+import com.proyectofinal.clases.empleado;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.WindowAdapter;
@@ -19,7 +20,9 @@ import javax.swing.JOptionPane;
  *
  * @author Manuel
  */
-public class jfprincipal extends javax.swing.JFrame {
+public final class jfprincipal extends javax.swing.JFrame {
+    
+    empleado emp = null;
     
     /**
      * Creates new form jfprincipal
@@ -30,6 +33,34 @@ public class jfprincipal extends javax.swing.JFrame {
                 cerrar();
     }
 
+    public jfprincipal(empleado emp){
+                initComponents();
+                    setImagesToComponents();
+                        cerrar();
+                            this.emp = emp;
+                                setPrivilegiosDeUsuario();
+    }
+    
+    public void setPrivilegiosDeUsuario(){
+        
+        String usuario = new String(emp.getNombre()+" "+emp.getApellido());
+        
+        jlblNombreApellido.setText(usuario);
+        jlblTipoEmpleado.setText(emp.getTipoEmpleado());
+        ImageIcon fotoEmp = emp.getImg();
+        Icon photoEmp = new ImageIcon(fotoEmp.getImage().getScaledInstance(jbtnPerfil.getWidth(),jbtnPerfil.getHeight(), Image.SCALE_DEFAULT));
+        jbtnPerfil.setIcon(photoEmp);
+        //jlblFoto.setIcon(emp.getImg());
+        
+        if(emp.getTipoEmpleado().equals("CAJERO")){
+            jbtnReporteVentas.setEnabled(false);
+            jbtnReporteVentas.setVisible(false);
+            jbtnPerfil.setEnabled(true);
+        }else if(emp.getTipoEmpleado().equals("GERENTE")){ 
+            
+        }    
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -46,12 +77,14 @@ public class jfprincipal extends javax.swing.JFrame {
         jpUpMenuOptions = new javax.swing.JPanel();
         jbtnDashboard1 = new javax.swing.JButton();
         jbtnMenu1 = new javax.swing.JButton();
-        jbtnLogin = new javax.swing.JButton();
+        jbtnPerfil = new javax.swing.JButton();
+        jbtnReporteVentas = new javax.swing.JButton();
+        jlblNombreApellido = new javax.swing.JLabel();
+        jlblTipoEmpleado = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("DOMINO´S PIZZA");
         setBackground(new java.awt.Color(255, 255, 255));
-        setMaximumSize(new java.awt.Dimension(900, 500));
         setMinimumSize(new java.awt.Dimension(900, 500));
         setResizable(false);
 
@@ -128,15 +161,30 @@ public class jfprincipal extends javax.swing.JFrame {
             }
         });
 
-        jbtnLogin.setBackground(new java.awt.Color(0, 100, 145));
-        jbtnLogin.setBorder(null);
-        jbtnLogin.setBorderPainted(false);
-        jbtnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbtnLogin.addActionListener(new java.awt.event.ActionListener() {
+        jbtnPerfil.setBackground(new java.awt.Color(0, 100, 145));
+        jbtnPerfil.setBorder(null);
+        jbtnPerfil.setBorderPainted(false);
+        jbtnPerfil.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnPerfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtnLoginActionPerformed(evt);
+                jbtnPerfilActionPerformed(evt);
             }
         });
+
+        jbtnReporteVentas.setBackground(new java.awt.Color(0, 100, 145));
+        jbtnReporteVentas.setBorder(null);
+        jbtnReporteVentas.setBorderPainted(false);
+        jbtnReporteVentas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnReporteVentas.setFocusPainted(false);
+        jbtnReporteVentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnReporteVentasActionPerformed(evt);
+            }
+        });
+
+        jlblNombreApellido.setForeground(new java.awt.Color(255, 255, 255));
+
+        jlblTipoEmpleado.setForeground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jpUpMenuOptionsLayout = new javax.swing.GroupLayout(jpUpMenuOptions);
         jpUpMenuOptions.setLayout(jpUpMenuOptionsLayout);
@@ -147,19 +195,31 @@ public class jfprincipal extends javax.swing.JFrame {
                 .addComponent(jbtnDashboard1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jbtnMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 679, Short.MAX_VALUE)
-                .addComponent(jbtnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 354, Short.MAX_VALUE)
+                .addComponent(jbtnReporteVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(107, 107, 107)
+                .addGroup(jpUpMenuOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jlblNombreApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlblTipoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jbtnPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jpUpMenuOptionsLayout.setVerticalGroup(
             jpUpMenuOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpUpMenuOptionsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jpUpMenuOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jbtnDashboard1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, Short.MAX_VALUE)
-                    .addGroup(jpUpMenuOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jbtnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
-                        .addComponent(jbtnMenu1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jpUpMenuOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpUpMenuOptionsLayout.createSequentialGroup()
+                        .addComponent(jlblNombreApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jlblTipoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpUpMenuOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jbtnReporteVentas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jpUpMenuOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jbtnMenu1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jbtnDashboard1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, Short.MAX_VALUE)
+                            .addComponent(jbtnPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE))))
                 .addContainerGap(9, Short.MAX_VALUE))
         );
 
@@ -183,20 +243,20 @@ public class jfprincipal extends javax.swing.JFrame {
     private void jbtnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnMenuActionPerformed
 
         this.dispose();
-        jfClasificacionMenu cm = new jfClasificacionMenu();
+        jfClasificacionMenu cm = new jfClasificacionMenu(emp);
         cm.setVisible(true);
 
     }//GEN-LAST:event_jbtnMenuActionPerformed
 
     private void jbtnDashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDashboardActionPerformed
         this.dispose();
-        jfprincipal app1 = new jfprincipal();
+        jfprincipal app1 = new jfprincipal(emp);
         app1.setVisible(true);
     }//GEN-LAST:event_jbtnDashboardActionPerformed
 
     private void jbtnProductoUnoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnProductoUnoMouseEntered
         
-        jbtnProductoUno.setBackground(new Color(193, 193, 193));
+        jbtnProductoUno.setBackground(new Color(55, 55, 55));
         
     }//GEN-LAST:event_jbtnProductoUnoMouseEntered
 
@@ -205,7 +265,7 @@ public class jfprincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtnProductoUnoMouseExited
 
     private void jbtnProductoDosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnProductoDosMouseEntered
-        jbtnProductoDos.setBackground(new Color(193, 193, 193));
+        jbtnProductoDos.setBackground(new Color(55, 55, 55));
     }//GEN-LAST:event_jbtnProductoDosMouseEntered
 
     private void jbtnProductoDosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnProductoDosMouseExited
@@ -213,20 +273,20 @@ public class jfprincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtnProductoDosMouseExited
 
     private void jbtnProductoTresMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnProductoTresMouseEntered
-        jbtnProductoTres.setBackground(new Color(193, 193, 193));
+        jbtnProductoTres.setBackground(new Color(55, 55, 55));
     }//GEN-LAST:event_jbtnProductoTresMouseEntered
 
     private void jbtnProductoTresMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnProductoTresMouseExited
         jbtnProductoTres.setBackground(new Color(255,255,255));
     }//GEN-LAST:event_jbtnProductoTresMouseExited
 
-    private void jbtnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnLoginActionPerformed
+    private void jbtnPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPerfilActionPerformed
         
-        this.dispose();
-            jfLoginOrCreateAcount app = new jfLoginOrCreateAcount();
-                app.setVisible(true);
-        
-    }//GEN-LAST:event_jbtnLoginActionPerformed
+    }//GEN-LAST:event_jbtnPerfilActionPerformed
+
+    private void jbtnReporteVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnReporteVentasActionPerformed
+        JOptionPane.showMessageDialog(null, "ESTAN USANDO EL BOTÓN DE REPORTE DE VENTAS");
+    }//GEN-LAST:event_jbtnReporteVentasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -271,7 +331,7 @@ public class jfprincipal extends javax.swing.JFrame {
                     jbtnProductoDos.setIcon(setIconoBtn("/01_lo_mas_comprado/02.png",jbtnProductoDos));
                         jbtnProductoTres.setIcon(setIconoBtn("/01_lo_mas_comprado/03.png",jbtnProductoTres));
                             jbtnMenu1.setIcon(setIconoBtn("/00_jf_principal/iconoMenu.png",jbtnMenu1));
-                                jbtnLogin.setIcon(setIconoBtn("/00_jf_principal/loginIcon.png",jbtnLogin));
+                                    jbtnReporteVentas.setIcon(setIconoBtn("/00_jf_principal/report.png",jbtnReporteVentas));
     }
     
     public Icon setIconoBtn(String url, JButton btn){
@@ -308,6 +368,7 @@ public class jfprincipal extends javax.swing.JFrame {
         int valor = JOptionPane.showConfirmDialog(null, "¿REALMENTE QUIERES CERRAR LA VENTANA?", "ATENCIÓN", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE,question);
         if(valor == JOptionPane.YES_OPTION){
             this.dispose(); 
+            emp = null;
         }else{
             this.setVisible(true);
         }  
@@ -315,11 +376,14 @@ public class jfprincipal extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jbtnDashboard1;
-    private javax.swing.JButton jbtnLogin;
     private javax.swing.JButton jbtnMenu1;
+    public static javax.swing.JButton jbtnPerfil;
     private javax.swing.JButton jbtnProductoDos;
     private javax.swing.JButton jbtnProductoTres;
     private javax.swing.JButton jbtnProductoUno;
+    private javax.swing.JButton jbtnReporteVentas;
+    private javax.swing.JLabel jlblNombreApellido;
+    private javax.swing.JLabel jlblTipoEmpleado;
     private javax.swing.JPanel jpDown;
     private javax.swing.JPanel jpUpMenuOptions;
     // End of variables declaration//GEN-END:variables

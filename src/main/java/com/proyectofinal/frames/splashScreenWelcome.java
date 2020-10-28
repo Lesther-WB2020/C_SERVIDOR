@@ -7,6 +7,7 @@ package com.proyectofinal.frames;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 import javax.swing.Timer;
 
 /**
@@ -24,6 +25,8 @@ public class splashScreenWelcome extends javax.swing.JFrame {
      */
     public splashScreenWelcome() {
         
+        this.setIconImage(new ImageIcon(getClass().getResource("/00_jf_principal/idm.png")).getImage());
+
         al = new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent e){
@@ -43,9 +46,9 @@ public class splashScreenWelcome extends javax.swing.JFrame {
     }
     
      private void mostrarVentana(){
-            jfprincipal app1 = new jfprincipal();
-                 this.dispose();
-                    app1.setVisible(true);
+         this.dispose();
+            jfLoginOrCreateAcount appCrear = new jfLoginOrCreateAcount();
+                appCrear.setVisible(true);
         }
      
     /**

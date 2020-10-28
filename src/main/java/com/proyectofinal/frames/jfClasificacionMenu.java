@@ -5,6 +5,7 @@
  */
 package com.proyectofinal.frames;
 
+import com.proyectofinal.clases.empleado;
 import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
@@ -25,6 +26,8 @@ import javax.swing.JPanel;
  */
 public class jfClasificacionMenu extends javax.swing.JFrame {
 
+    empleado emp;
+    
     /**
      * Creates new form jfClasificacionMenu
      */
@@ -34,6 +37,13 @@ public class jfClasificacionMenu extends javax.swing.JFrame {
                 cerrar();
     }
 
+    public jfClasificacionMenu(empleado emp) {
+        this.emp = emp;
+            initComponents();
+                setearIconos();
+                    cerrar();
+    }
+    
     public void cerrar(){
     
         try {
@@ -255,7 +265,7 @@ public class jfClasificacionMenu extends javax.swing.JFrame {
 
     private void jbtnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnVolverActionPerformed
        this.dispose();
-            jfprincipal app1 = new jfprincipal();
+            jfprincipal app1 = new jfprincipal(emp);
                 app1.setVisible(true);
     }//GEN-LAST:event_jbtnVolverActionPerformed
 

@@ -13,14 +13,26 @@ import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.HeadlessException;
+import java.awt.Image;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -30,15 +42,51 @@ public class crearCuentaEmpleado extends javax.swing.JFrame {
 
     String pass;
     String tipoEmpleado_;
+        String rutaImg = null;
+        
     
     /**
      * Creates new form crearCuentaEmpleado
      */
     public crearCuentaEmpleado() {
         initComponents();
-            cerrar();
+            setearIconos();
+                validarCorreo();
+                    cerrar();
     }
 
+    protected void validarCorreo(){
+        KeyListener listener = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {//tipo de tecla
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {//se presiona la tecla
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {// se suelta la tecla
+                if(e.getKeyChar()=='\n'){//si se presiona un enter en la caja de texto del email validarlo
+                    if(validarEmail(jtxtEmail.getText())==false){
+                        Icon registroExitoso = new ImageIcon(getClass().getResource("/04_accounts/emailIncorrect.png"));
+                        JOptionPane.showMessageDialog(null, "FORMATO DE CORREO ELECTRÓNICO NO VÁLIDO", "MENSAJE", JOptionPane.OK_OPTION, registroExitoso);
+                    }
+                }
+            }
+        };
+        jtxtEmail.addKeyListener(listener);
+    }
+    
+    
+    public boolean validarEmail(String email){
+            //para validar, en éste caso, una cadena de texto con las especificaciones indicadas.
+            Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"+"[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+            //matcher es un comparador, en este caso comparamos el pattern con el email que enviaremos.
+            Matcher matcher_ = pattern.matcher(email);
+            return matcher_.find();
+    }  
+    
     class jPanelGradient extends JPanel{
         
         @Override
@@ -77,11 +125,12 @@ public class crearCuentaEmpleado extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jcmTipoEmpleado = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
-        jbtnElegirFoto = new javax.swing.JButton();
-        jlblFoto = new java.awt.Label();
+        jbtnFoto = new javax.swing.JButton();
         jcbMostrar = new javax.swing.JCheckBox();
         jtxtConfirmPassword = new javax.swing.JPasswordField();
         jbtnRegistrarEmpleado = new javax.swing.JButton();
+        lblFotoElegida = new javax.swing.JLabel();
+        jbtnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("DOMINO´S PIZZA");
@@ -94,13 +143,14 @@ public class crearCuentaEmpleado extends javax.swing.JFrame {
         jpCreateAccount.setPreferredSize(new java.awt.Dimension(900, 500));
 
         jtxtUsuario.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jtxtUsuario.setForeground(new java.awt.Color(204, 204, 204));
+        jtxtUsuario.setForeground(new java.awt.Color(51, 51, 51));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("USUARIO");
 
         jtxtNombre.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jtxtNombre.setForeground(new java.awt.Color(51, 51, 51));
         jtxtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtxtNombreActionPerformed(evt);
@@ -112,10 +162,13 @@ public class crearCuentaEmpleado extends javax.swing.JFrame {
         jLabel2.setText("NOMBRE");
 
         jtxtApellido.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jtxtApellido.setForeground(new java.awt.Color(51, 51, 51));
 
         jtxtEmail.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jtxtEmail.setForeground(new java.awt.Color(51, 51, 51));
 
         jtxtPassword.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jtxtPassword.setForeground(new java.awt.Color(51, 51, 51));
         jtxtPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtxtPasswordActionPerformed(evt);
@@ -142,25 +195,26 @@ public class crearCuentaEmpleado extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
         jLabel6.setText("CONTRASEÑA");
 
-        jbtnElegirFoto.setBackground(new java.awt.Color(0, 102, 102));
-        jbtnElegirFoto.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jbtnElegirFoto.setForeground(new java.awt.Color(255, 255, 255));
-        jbtnElegirFoto.setText("ELEGIR");
-        jbtnElegirFoto.setBorder(null);
-        jbtnElegirFoto.setBorderPainted(false);
-        jbtnElegirFoto.setFocusPainted(false);
-        jbtnElegirFoto.addMouseListener(new java.awt.event.MouseAdapter() {
+        jbtnFoto.setBackground(new java.awt.Color(0, 102, 102));
+        jbtnFoto.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jbtnFoto.setForeground(new java.awt.Color(255, 255, 255));
+        jbtnFoto.setText("SUBIR");
+        jbtnFoto.setBorder(null);
+        jbtnFoto.setBorderPainted(false);
+        jbtnFoto.setFocusPainted(false);
+        jbtnFoto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jbtnElegirFotoMouseEntered(evt);
+                jbtnFotoMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jbtnElegirFotoMouseExited(evt);
+                jbtnFotoMouseExited(evt);
             }
         });
-
-        jlblFoto.setAlignment(java.awt.Label.CENTER);
-        jlblFoto.setBackground(new java.awt.Color(153, 153, 153));
-        jlblFoto.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jbtnFoto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnFotoActionPerformed(evt);
+            }
+        });
 
         jcbMostrar.setBackground(new java.awt.Color(154, 218, 217));
         jcbMostrar.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -175,6 +229,7 @@ public class crearCuentaEmpleado extends javax.swing.JFrame {
         });
 
         jtxtConfirmPassword.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jtxtConfirmPassword.setForeground(new java.awt.Color(51, 51, 51));
 
         jbtnRegistrarEmpleado.setBackground(new java.awt.Color(0, 120, 174));
         jbtnRegistrarEmpleado.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
@@ -195,6 +250,20 @@ public class crearCuentaEmpleado extends javax.swing.JFrame {
         jbtnRegistrarEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnRegistrarEmpleadoActionPerformed(evt);
+            }
+        });
+
+        lblFotoElegida.setBackground(new java.awt.Color(102, 102, 102));
+        lblFotoElegida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/04_accounts/photoProfile.png"))); // NOI18N
+
+        jbtnVolver.setBackground(new java.awt.Color(161, 223, 219));
+        jbtnVolver.setBorder(null);
+        jbtnVolver.setBorderPainted(false);
+        jbtnVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnVolver.setFocusPainted(false);
+        jbtnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnVolverActionPerformed(evt);
             }
         });
 
@@ -232,13 +301,19 @@ public class crearCuentaEmpleado extends javax.swing.JFrame {
                                         .addGroup(jpCreateAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jcbMostrar)
                                             .addComponent(jtxtConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                        .addGap(31, 31, 31)
                         .addGroup(jpCreateAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlblFoto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jbtnElegirFoto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jcmTipoEmpleado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jpCreateAccountLayout.createSequentialGroup()
+                                .addGap(31, 31, 31)
+                                .addGroup(jpCreateAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jbtnFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jcmTipoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpCreateAccountLayout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(lblFotoElegida, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jpCreateAccountLayout.createSequentialGroup()
-                        .addGap(310, 310, 310)
+                        .addContainerGap()
+                        .addComponent(jbtnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(208, 208, 208)
                         .addComponent(jbtnRegistrarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(169, Short.MAX_VALUE))
         );
@@ -248,9 +323,10 @@ public class crearCuentaEmpleado extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addGroup(jpCreateAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpCreateAccountLayout.createSequentialGroup()
-                        .addComponent(jlblFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jbtnElegirFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(4, 4, 4)
+                        .addComponent(lblFotoElegida, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jbtnFoto))
                     .addGroup(jpCreateAccountLayout.createSequentialGroup()
                         .addGroup(jpCreateAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
@@ -278,9 +354,13 @@ public class crearCuentaEmpleado extends javax.swing.JFrame {
                     .addComponent(jcmTipoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jcbMostrar)
-                .addGap(35, 35, 35)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addComponent(jbtnRegistrarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addGap(28, 28, 28))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpCreateAccountLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jbtnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -299,42 +379,81 @@ public class crearCuentaEmpleado extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtnRegistrarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnRegistrarEmpleadoActionPerformed
-
         try {
+        if(hayCamposVacios()!=true){      
+                    empleado emp = new empleado();
+                    Consulta mysql = new Consulta();
 
-            empleado emp = new empleado();
-            Consulta mysql = new Consulta();
+                    pass = new String(jtxtPassword.getPassword());
+                    String passConfirm = new String(jtxtConfirmPassword.getPassword());
 
-            pass = new String(jtxtPassword.getPassword());
-            String passConfirm = new String(jtxtConfirmPassword.getPassword());
-
-            if(pass.equals(passConfirm)==true){
-                pass = Hash.sha1(pass);
-                emp = setDatosInObject(new empleado());
-                if(mysql.registrarUsuario(emp)==true){
-                    Icon registroExitoso = new ImageIcon(getClass().getResource("/03_mensajes/succesful.png"));
-                    JOptionPane.showMessageDialog(null, "USUARIO REGISTRADO CON ÉXITO", "MENSAJE", JOptionPane.OK_OPTION, registroExitoso);
-                    this.dispose();
-                    jfprincipal app = new jfprincipal();
-                    app.setVisible(true);
+                        if(pass.equals(passConfirm)==true){
+                                if(mysql.validarExistenciaUsuario(jtxtUsuario.getText())>0){//SI ES MAYOR A CERO O EN TODO CASO IGUAL A UNO EL USUARIO YE
+                                    Icon usuarioRegistrado= new ImageIcon(getClass().getResource("/04_accounts/userAlreadyRegistered.png"));
+                                    JOptionPane.showMessageDialog(null, "EL USUARIO ESPECIFICADO YA ESTÁ REGISTRADO", "MENSAJE", JOptionPane.OK_OPTION,usuarioRegistrado);
+                                }else{ //EL USUARIO NO EXISTE Y POR ENDE PODEMOS REGISTRARLO.
+                                        if(mysql.validarEmail(jtxtEmail.getText())){ 
+                                                pass = Hash.sha1(pass);
+                                                emp = setDatosInObject(new empleado());
+                                                    if(mysql.registrarUsuario(emp)==true){
+                                                        Icon registroExitoso = new ImageIcon(getClass().getResource("/03_mensajes/succesful.png"));
+                                                        JOptionPane.showMessageDialog(null, "USUARIO REGISTRADO CON ÉXITO", "MENSAJE", JOptionPane.OK_OPTION, registroExitoso);
+                                                            this.dispose();
+                                                                jfLoginOrCreateAcount loca = new jfLoginOrCreateAcount();
+                                                                    loca.setVisible(true); 
+                                                    }else{
+                                                        throw new SQLException(); //línea 208
+                                                    }
+                                        }else{
+                                             Icon registroExitoso = new ImageIcon(getClass().getResource("/04_accounts/emailIncorrect.png"));
+                                             JOptionPane.showMessageDialog(null, "FORMATO DE CORREO ELECTRÓNICO NO VÁLIDO", "MENSAJE", JOptionPane.OK_OPTION, registroExitoso);
+                                        }
+                                }
+                        }else{
+                            Icon contraMala;
+                            contraMala = new ImageIcon(getClass().getResource("/03_mensajes/contraIncorrecta.png"));
+                            JOptionPane.showMessageDialog(null, "LAS CONTRASEÑAS NO COINCIDEN", "ATENCIÓN",JOptionPane.OK_OPTION, contraMala);
+                        }
                 }else{
-                    throw new SQLException(); //línea 208
+                    Icon camposVacios;
+                    camposVacios =  new ImageIcon(getClass().getResource("/04_accounts/camposVacios.png"));
+                    JOptionPane.showMessageDialog(null, "NO PUEDES DEJAR CAMPOS VACÍOS", "MENSAJE", JOptionPane.OK_OPTION,camposVacios);
                 }
-            }else{
-                Icon contraMala;
-                contraMala = new ImageIcon(getClass().getResource("/03_mensajes/contraIncorrecta.png"));
-                JOptionPane.showMessageDialog(null, "LAS CONTRASEÑAS NO COINCIDEN", "ATENCIÓN",JOptionPane.OK_OPTION, contraMala);
-            }
-
-        } catch (HeadlessException | ClassNotFoundException | SQLException e) {
+        } catch (HeadlessException | SQLException e) {
+                Icon algunErrorsito;
+                    algunErrorsito = new ImageIcon(getClass().getResource("/03_mensajes/errorEnRegistro.png"));
+                        JOptionPane.showMessageDialog(null, "ERROR DE REGISTRO, VERIFICA LA EXTENSIÓN DE LA FOTOGRAFÍA", "ATENCIÓN",JOptionPane.OK_OPTION, algunErrorsito);
+                            System.out.println(e.getMessage());
+         } catch (FileNotFoundException ex) {
+            Logger.getLogger(crearCuentaEmpleado.class.getName()).log(Level.SEVERE, null, ex);
             Icon algunErrorsito;
-            algunErrorsito = new ImageIcon(getClass().getResource("/03_mensajes/errorEnRegistro.png"));
-            JOptionPane.showMessageDialog(null, "HUBO UN ERROR EN EL REGISTRO", "ATENCIÓN",JOptionPane.OK_OPTION, algunErrorsito);
-            System.out.println(e.getMessage());
+                    algunErrorsito = new ImageIcon(getClass().getResource("/03_mensajes/errorEnRegistro.png"));
+                        JOptionPane.showMessageDialog(null, "ERORR AL BUSCAR EL PATH DE LA FOTOGRAFÍA", "ATENCIÓN",JOptionPane.OK_OPTION, algunErrorsito);
+                            System.out.println(ex.getMessage());
         }
-
     }//GEN-LAST:event_jbtnRegistrarEmpleadoActionPerformed
-
+ 
+    public void setearIconos(){
+        jbtnVolver.setIcon(setIconoBtn("/02_clasificacion_menu/05.png",jbtnVolver));
+            this.setIconImage(new ImageIcon(getClass().getResource("/00_jf_principal/idm.png")).getImage());
+    }
+    
+      public Icon setIconoBtn(String url, JButton btn){
+        ImageIcon imgIcon = new ImageIcon(getClass().getResource(url));
+            int widthBtn = btn.getWidth();
+                int heightBtn = btn.getHeight();
+        
+                    ImageIcon iconoBtn = new ImageIcon(imgIcon.getImage().getScaledInstance(widthBtn, heightBtn, Image.SCALE_DEFAULT));
+                        return iconoBtn;
+    }
+    
+    public boolean hayCamposVacios(){
+            if(jtxtUsuario.getText().equals("")||jtxtNombre.getText().equals("")||jtxtApellido.getText().equals("")||jtxtEmail.getText().equals("")||jtxtPassword.getPassword().equals("")||jtxtConfirmPassword.getPassword().equals("")||(rutaImg == null)){
+                return true;
+            }
+        return false;
+    }
+    
     private void jcbMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMostrarActionPerformed
         if(jcbMostrar.isSelected()){
             jtxtConfirmPassword.setEchoChar((char)0);
@@ -361,15 +480,33 @@ public class crearCuentaEmpleado extends javax.swing.JFrame {
         jbtnRegistrarEmpleado.setForeground(new Color(0,120,174));
     }//GEN-LAST:event_jbtnRegistrarEmpleadoMouseExited
 
-    private void jbtnElegirFotoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnElegirFotoMouseExited
-        jbtnElegirFoto.setBackground(new Color(0,102,102));
-        jbtnElegirFoto.setForeground(new Color(255,255,255));
-    }//GEN-LAST:event_jbtnElegirFotoMouseExited
+    private void jbtnFotoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnFotoMouseExited
+        jbtnFoto.setBackground(new Color(0,102,102));
+        jbtnFoto.setForeground(new Color(255,255,255));
+    }//GEN-LAST:event_jbtnFotoMouseExited
 
-    private void jbtnElegirFotoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnElegirFotoMouseEntered
-        jbtnElegirFoto.setBackground(new Color(255,255,255));
-        jbtnElegirFoto.setForeground(new Color(0,102,102));
-    }//GEN-LAST:event_jbtnElegirFotoMouseEntered
+    private void jbtnFotoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnFotoMouseEntered
+        jbtnFoto.setBackground(new Color(255,255,255));
+        jbtnFoto.setForeground(new Color(0,102,102));
+    }//GEN-LAST:event_jbtnFotoMouseEntered
+
+    private void jbtnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnVolverActionPerformed
+        backFromThis();
+    }//GEN-LAST:event_jbtnVolverActionPerformed
+
+    private void jbtnFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnFotoActionPerformed
+        
+        JFileChooser jfc = new JFileChooser();
+            jfc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+                FileNameExtensionFilter filtrarArchivos = new FileNameExtensionFilter("*.JPG", "jpg");
+                    jfc.setFileFilter(filtrarArchivos);  
+        
+                        int fileSelected = jfc.showOpenDialog(this);
+                            if(fileSelected == JFileChooser.APPROVE_OPTION){
+                                rutaImg = jfc.getSelectedFile().getAbsolutePath();
+                                        lblFotoElegida.setIcon(new ImageIcon(rutaImg));
+                            }
+    }//GEN-LAST:event_jbtnFotoActionPerformed
 
     public void cerrar(){
     
@@ -386,17 +523,23 @@ public class crearCuentaEmpleado extends javax.swing.JFrame {
         }
         
     }
-    
-    public void confirmarCerrarVentana(){
+   
+    public void backFromThis(){
+        
         Icon question;
         question = new ImageIcon(getClass().getResource("/00_jf_principal/question.png"));
         
-        int valor = JOptionPane.showConfirmDialog(null, "¿REALMENTE QUIERES CERRAR LA VENTANA? SE PERDERÁN LOS DATOS QUE HAYAS INGRESADO", "ATENCIÓN", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE,question);
+        int valor = JOptionPane.showConfirmDialog(null, "¿REALMENTE QUIERES REGRESAR Y CERRAR LA VENTANA?", "ATENCIÓN", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE,question);
         if(valor == JOptionPane.YES_OPTION){
             this.dispose(); 
                 jfLoginOrCreateAcount app1 = new jfLoginOrCreateAcount();
                     app1.setVisible(true);
         } 
+        
+    }
+   
+    public void confirmarCerrarVentana(){
+        backFromThis();
     }
     
     public empleado setDatosInObject(empleado emp){
@@ -411,6 +554,7 @@ public class crearCuentaEmpleado extends javax.swing.JFrame {
                                 tipoEmpleado_ = "GERENTE";
                             }
                             emp.setTipoEmpleado(tipoEmpleado_);
+                            emp.setRutaFoto(rutaImg); 
                                 return emp;
     }
     
@@ -456,11 +600,11 @@ public class crearCuentaEmpleado extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JButton jbtnElegirFoto;
+    private javax.swing.JButton jbtnFoto;
     private javax.swing.JButton jbtnRegistrarEmpleado;
+    private javax.swing.JButton jbtnVolver;
     private javax.swing.JCheckBox jcbMostrar;
     private javax.swing.JComboBox<String> jcmTipoEmpleado;
-    private java.awt.Label jlblFoto;
     private javax.swing.JPanel jpCreateAccount;
     private javax.swing.JTextField jtxtApellido;
     private javax.swing.JPasswordField jtxtConfirmPassword;
@@ -468,5 +612,6 @@ public class crearCuentaEmpleado extends javax.swing.JFrame {
     private javax.swing.JTextField jtxtNombre;
     private javax.swing.JPasswordField jtxtPassword;
     private javax.swing.JTextField jtxtUsuario;
+    private javax.swing.JLabel lblFotoElegida;
     // End of variables declaration//GEN-END:variables
 }

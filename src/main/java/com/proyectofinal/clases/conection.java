@@ -100,46 +100,5 @@ public class conection {
         }
         
     }
-    
-    public ResultSet verMenu(){
-        ResultSet rs = null;
-        CallableStatement cts;
-            try {
-                Connection con = getConection();
-                            String query = "{CALL proyectofinaldb.verMenu()}";
-                                Statement stmt = con.createStatement();
-                                    rs = stmt.executeQuery(query);
-                                        cts = con.prepareCall(query);
-            } catch (ClassNotFoundException | SQLException e) {
-                System.out.println(e.getMessage());
-            }
-            return rs;
-    }
-    
-    public void guardarItem(String nombre, String ruta, double precio, String categoria, int descuento, double porcentajeDescuento) throws FileNotFoundException
-    {
-        String query = "{CALL proyectofinaldb.insertarItemEnMenu(?,?,?,?,?,?)}";
-        ResultSet rs = null;
-        FileInputStream fi = null;
-        CallableStatement cts;
-        try {
-            Connection con = getConection();
-                File file = new File(ruta);
-                    fi = new FileInputStream(file);
-                        cts = con.prepareCall(query);
-                        
-                            cts.setString(1,nombre);
-                            cts.setBinaryStream(2,fi);
-                            cts.setDouble(3,precio);
-                            cts.setString(4,categoria);
-                            cts.setInt(5, descuento);
-                            cts.setDouble(6, porcentajeDescuento);
 
-                                int res = cts.executeUpdate();
-                    
-        } catch (ClassNotFoundException | SQLException e) {
-            System.out.println("ERROR:" + e.getMessage());
-        }
-    }
-    
 }

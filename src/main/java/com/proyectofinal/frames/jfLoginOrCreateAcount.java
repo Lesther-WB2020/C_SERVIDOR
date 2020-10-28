@@ -35,7 +35,6 @@ public class jfLoginOrCreateAcount extends javax.swing.JFrame {
     }
     
      public void setearIconos(){
-        jbtnVolver.setIcon(setIconoBtn("/02_clasificacion_menu/05.png",jbtnVolver));
         this.setIconImage(new ImageIcon(getClass().getResource("/00_jf_principal/idm.png")).getImage());
     }
     
@@ -50,8 +49,7 @@ public class jfLoginOrCreateAcount extends javax.swing.JFrame {
                         return iconoBtn;
     }
     
-    class jPanelGradient extends JPanel{
-        
+    class jPanelGradient extends JPanel{  
         @Override
         protected void paintComponent(Graphics g){
             Graphics2D g2d = (Graphics2D) g;
@@ -62,7 +60,6 @@ public class jfLoginOrCreateAcount extends javax.swing.JFrame {
                         GradientPaint gp = new GradientPaint(0,0,colorUno,180,height,colorDos);
                             g2d.setPaint(gp);
                             g2d.fillRect(0, 0, width, height);
-                
         }
     }
 
@@ -88,9 +85,7 @@ public class jfLoginOrCreateAcount extends javax.swing.JFrame {
         
         int valor = JOptionPane.showConfirmDialog(null, "¿REALMENTE QUIERES CERRAR LA VENTANA?", "ATENCIÓN", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE,question);
         if(valor == JOptionPane.YES_OPTION){
-            this.dispose(); 
-                jfprincipal app1 = new jfprincipal();
-                    app1.setVisible(true);
+            this.dispose();
         } 
     }
     
@@ -106,7 +101,6 @@ public class jfLoginOrCreateAcount extends javax.swing.JFrame {
         jpLogin = new jPanelGradient();
         jbtnCrearCuenta = new javax.swing.JButton();
         jbtnIniciarSesion = new javax.swing.JButton();
-        jbtnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("DOMINO´S PIZZA");
@@ -170,28 +164,11 @@ public class jfLoginOrCreateAcount extends javax.swing.JFrame {
         });
         jpLogin.add(jbtnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 70, 470, 150));
 
-        jbtnVolver.setBackground(new java.awt.Color(161, 223, 219));
-        jbtnVolver.setBorder(null);
-        jbtnVolver.setBorderPainted(false);
-        jbtnVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbtnVolver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtnVolverActionPerformed(evt);
-            }
-        });
-        jpLogin.add(jbtnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 80, 72));
-
         getContentPane().add(jpLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 500));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jbtnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnVolverActionPerformed
-        this.dispose();
-            jfprincipal app = new jfprincipal();
-                app.setVisible(true);
-    }//GEN-LAST:event_jbtnVolverActionPerformed
 
     private void jbtnCrearCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCrearCuentaActionPerformed
         
@@ -222,7 +199,9 @@ public class jfLoginOrCreateAcount extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtnCrearCuentaMouseExited
 
     private void jbtnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnIniciarSesionActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+            jfIniciarSesion app = new jfIniciarSesion();
+                app.setVisible(true);
     }//GEN-LAST:event_jbtnIniciarSesionActionPerformed
 
     /**
@@ -263,7 +242,6 @@ public class jfLoginOrCreateAcount extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jbtnCrearCuenta;
     private javax.swing.JButton jbtnIniciarSesion;
-    private javax.swing.JButton jbtnVolver;
     private javax.swing.JPanel jpLogin;
     // End of variables declaration//GEN-END:variables
 }
