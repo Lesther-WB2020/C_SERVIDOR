@@ -5,6 +5,7 @@
  */
 package com.proyectofinal.frames;
 
+import com.proyectofinal.clases.Producto;
 import com.proyectofinal.clases.empleado;
 import java.awt.Color;
 import java.awt.GradientPaint;
@@ -13,6 +14,7 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -25,8 +27,8 @@ import javax.swing.JPanel;
  * @author Manuel
  */
 public class jfClasificacionMenu extends javax.swing.JFrame {
-
-    empleado emp;
+    public static ArrayList<Producto> Lista_productos = new ArrayList<Producto> ();
+    empleado emp = null;
     
     /**
      * Creates new form jfClasificacionMenu
@@ -67,7 +69,7 @@ public class jfClasificacionMenu extends javax.swing.JFrame {
         int valor = JOptionPane.showConfirmDialog(null, "¿REALMENTE QUIERES CERRAR LA VENTANA?", "ATENCIÓN", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE,question);
         if(valor == JOptionPane.YES_OPTION){
             this.dispose(); 
-                jfprincipal app = new jfprincipal();
+                jfprincipal app = new jfprincipal(emp);
                     app.setVisible(true);
         }
     }
@@ -109,6 +111,9 @@ public class jfClasificacionMenu extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(900, 500));
         setMinimumSize(new java.awt.Dimension(900, 500));
         setResizable(false);
+
+        jpanelCategorias.setMaximumSize(new java.awt.Dimension(900, 500));
+        jpanelCategorias.setMinimumSize(new java.awt.Dimension(900, 500));
 
         jbtnPizzas.setBackground(new java.awt.Color(255, 255, 255));
         jbtnPizzas.setFont(new java.awt.Font("Comic Sans MS", 1, 36)); // NOI18N
@@ -260,12 +265,15 @@ public class jfClasificacionMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtnAdicionalesActionPerformed
 
     private void jbtnPizzasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPizzasActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+            jfMenuPizzas menupiza = new jfMenuPizzas(emp);
+                menupiza.setVisible(true);
+        
     }//GEN-LAST:event_jbtnPizzasActionPerformed
 
     private void jbtnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnVolverActionPerformed
-       this.dispose();
-            jfprincipal app1 = new jfprincipal(emp);
+        jfprincipal app1 = new jfprincipal(emp);    
+            this.dispose();
                 app1.setVisible(true);
     }//GEN-LAST:event_jbtnVolverActionPerformed
 
