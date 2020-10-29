@@ -22,17 +22,18 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.22</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.google.protobuf</groupId>
+                    <artifactId>protobuf-java</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.mytechia</groupId>
             <artifactId>opencv</artifactId>
             <version>4.1.0-my</version>
             <type>aar</type>
-        </dependency>
-        <dependency>
-            <groupId>org.openpnp</groupId>
-            <artifactId>opencv</artifactId>
-            <version>4.3.0-2</version>
         </dependency>
     </dependencies>
     <properties>

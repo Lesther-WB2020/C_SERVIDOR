@@ -105,7 +105,8 @@ public class Consulta extends conection{
                                                                 BufferedImage img = null;
                                                                 img = ImageIO.read(new ByteArrayInputStream(data));
                                                                 emp.setImg(new ImageIcon(img)); 
-                                                                    return true;
+                                                                    emp.setCorreo(rs.getString(8)); 
+                                                                        return true;
                                         } catch (IOException | SQLException e) {
                                              JOptionPane.showConfirmDialog(null, "HUBO UN ERROR AL INICIAR SESIÓN", "MENSAJE", JOptionPane.OK_OPTION, JOptionPane.ERROR, new ImageIcon(getClass().getResource("/03_mensajes/errorEnRegistro.png")));
                                              return false;
