@@ -29,12 +29,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <dependency>
-            <groupId>com.mytechia</groupId>
-            <artifactId>opencv</artifactId>
-            <version>4.1.0-my</version>
-            <type>aar</type>
-        </dependency>
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

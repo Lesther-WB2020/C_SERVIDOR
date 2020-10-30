@@ -15,7 +15,7 @@ public class Producto {
     private String    nombre;
     private String    categoria;
     private double    precio;
-    
+    private int       cantidad;
            /**
             * @return the id
             */
@@ -71,5 +71,20 @@ public class Producto {
            public void setPrecio(double precio) {
                this.precio = precio;
            }
+           
+           
+            /**
+             * @return the cantidad
+             */
+              public int getCantidad() {
+                 return cantidad;
+              }
+
+             /**
+              * @param cantidad the cantidad to set
+              */
+               public void setCantidad(int cantidad) {
+                   this.cantidad = cantidad;
+               }
 
 }

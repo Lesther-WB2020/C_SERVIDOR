@@ -17,7 +17,6 @@ public class cliente{
             private String   Apellido;
             private String   Correo_electronico;
       
-                    
                     /**
                      * @return the idCliente
                      */

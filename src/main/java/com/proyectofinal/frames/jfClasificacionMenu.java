@@ -181,6 +181,11 @@ public class jfClasificacionMenu extends javax.swing.JFrame {
                 jbtnDonCalzzoneMouseExited(evt);
             }
         });
+        jbtnDonCalzzone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDonCalzzoneActionPerformed(evt);
+            }
+        });
 
         jbtnBebidas.setBackground(new java.awt.Color(255, 255, 255));
         jbtnBebidas.setFont(new java.awt.Font("Comic Sans MS", 1, 36)); // NOI18N
@@ -197,6 +202,11 @@ public class jfClasificacionMenu extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 jbtnBebidasMouseExited(evt);
+            }
+        });
+        jbtnBebidas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnBebidasActionPerformed(evt);
             }
         });
 
@@ -320,6 +330,14 @@ public class jfClasificacionMenu extends javax.swing.JFrame {
     private void jbtnPizzasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnPizzasMouseClicked
         
     }//GEN-LAST:event_jbtnPizzasMouseClicked
+
+    private void jbtnDonCalzzoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDonCalzzoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnDonCalzzoneActionPerformed
+
+    private void jbtnBebidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnBebidasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnBebidasActionPerformed
 
     public void setearIconos(){
         jbtnVolver.setIcon(setIconoBtn("/02_clasificacion_menu/05.png",jbtnVolver));

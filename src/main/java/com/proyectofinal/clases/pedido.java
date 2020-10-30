@@ -5,6 +5,8 @@
  */
 package com.proyectofinal.clases;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Iosef14
@@ -12,11 +14,25 @@ package com.proyectofinal.clases;
 public class pedido {
 
     private int       idPedido;
-    private Producto  producto;
+    private ArrayList <Producto> listaProductos;
     private empleado  emp;
     private mesa      Mesa;
     private cliente   Cliente;
-    private int       cantidad;
+    private double    totalCompra;
+    
+                /**
+                * @return the listaProductos
+                */
+               public ArrayList <Producto> getListaProductos() {
+                   return listaProductos;
+               }
+
+               /**
+                * @param listaProductos the listaProductos to set
+                */
+               public void setListaProductos(ArrayList <Producto> listaProductos) {
+                   this.listaProductos = listaProductos;
+               }
     
                 /**
                  * @return the idPedido
@@ -30,20 +46,6 @@ public class pedido {
                  */
                 public void setIdPedido(int idPedido) {
                     this.idPedido = idPedido;
-                }
-
-                /**
-                 * @return the producto
-                 */
-                public Producto getProducto() {
-                    return producto;
-                }
-
-                /**
-                 * @param producto the producto to set
-                 */
-                public void setProducto(Producto producto) {
-                    this.producto = producto;
                 }
 
                 /**
@@ -89,17 +91,17 @@ public class pedido {
                 }
 
                 /**
-                 * @return the cantidad
+                 * @return the totalCompra
                  */
-                public int getCantidad() {
-                    return cantidad;
+                public double getTotalCompra() {
+                    return totalCompra;
                 }
 
                 /**
-                 * @param cantidad the cantidad to set
+                 * @param totalCompra the totalCompra to set
                  */
-                public void setCantidad(int cantidad) {
-                    this.cantidad = cantidad;
+                public void setTotalCompra(double totalCompra) {
+                    this.totalCompra = totalCompra;
                 }
-    
+
 }
