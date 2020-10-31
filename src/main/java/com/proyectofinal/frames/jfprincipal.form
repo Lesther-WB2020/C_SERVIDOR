@@ -163,7 +163,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jbtnRegistrarEditarEliminar" min="-2" pref="67" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jbtnMenu1" min="-2" pref="67" max="-2" attributes="0"/>
+                      <Component id="jbtnPedidos" min="-2" pref="67" max="-2" attributes="0"/>
                       <EmptySpace pref="614" max="32767" attributes="0"/>
                       <Component id="jbtnReporteVentas" min="-2" pref="67" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -176,7 +176,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jbtnPerfilUsuario" max="32767" attributes="0"/>
-                          <Component id="jbtnMenu1" max="32767" attributes="0"/>
+                          <Component id="jbtnPedidos" max="32767" attributes="0"/>
                           <Component id="jbtnReporteVentas" alignment="0" pref="55" max="32767" attributes="0"/>
                           <Component id="jbtnRegistrarEditarEliminar" alignment="1" max="32767" attributes="0"/>
                       </Group>
@@ -203,7 +203,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtnDashboardActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jbtnMenu1">
+            <Component class="javax.swing.JButton" name="jbtnPedidos">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="91" green="64" red="0" type="rgb"/>

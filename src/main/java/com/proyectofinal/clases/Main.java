@@ -22,16 +22,6 @@ public class Main {
     public static void main(String[] args){
         splashScreenWelcome ssw = new splashScreenWelcome();
             ssw.setVisible(true);
-       /* jfprincipal app1 = new jfprincipal();
-            app1.setVisible(true);*/
-            /*jfLoginOrCreateAcount app = new jfLoginOrCreateAcount();
-                app.setVisible(true);*/
-                    /*crearCuentaEmpleado app = new crearCuentaEmpleado();
-                        app.setVisible(true);*/
-                           /* jfIniciarSesion app = new jfIniciarSesion();
-                                app.setVisible(true);*/
-                                    /*jfMenuPizzas menupizas = new jfMenuPizzas();
-                                        menupizas.setVisible(true);*/
     }
     
 }

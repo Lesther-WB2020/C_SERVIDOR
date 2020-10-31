@@ -181,27 +181,6 @@ public final class jfRegistrarActualizarEliminar extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jbtnMesasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnMesasMouseClicked
-
-    }//GEN-LAST:event_jbtnMesasMouseClicked
-
-    private void jbtnMesasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnMesasMouseEntered
-        jbtnMesas.setBackground(new Color(0, 120, 174));
-        jbtnMesas.setForeground(new java.awt.Color(255,255,255));
-    }//GEN-LAST:event_jbtnMesasMouseEntered
-
-    private void jbtnMesasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnMesasMouseExited
-        jbtnMesas.setBackground(new Color(255,255,255));
-        jbtnMesas.setForeground(new java.awt.Color(0, 120, 174));
-    }//GEN-LAST:event_jbtnMesasMouseExited
-
-    private void jbtnMesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnMesasActionPerformed
-        this.dispose();
-            jfMesas mesasRegistros = new jfMesas(emp);
-                mesasRegistros.setVisible(true);
-
-    }//GEN-LAST:event_jbtnMesasActionPerformed
-
     private void jbtnClientesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnClientesMouseEntered
         jbtnClientes.setBackground(new Color(0, 120, 174));
         jbtnClientes.setForeground(new java.awt.Color(255,255,255));
@@ -223,6 +202,26 @@ public final class jfRegistrarActualizarEliminar extends javax.swing.JFrame {
             this.dispose();
                 app1.setVisible(true);
     }//GEN-LAST:event_jbtnVolverActionPerformed
+
+    private void jbtnMesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnMesasActionPerformed
+        this.dispose();
+        jfMesas mesasRegistros = new jfMesas(emp);
+        mesasRegistros.setVisible(true);
+    }//GEN-LAST:event_jbtnMesasActionPerformed
+
+    private void jbtnMesasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnMesasMouseExited
+        jbtnMesas.setBackground(new Color(255,255,255));
+        jbtnMesas.setForeground(new java.awt.Color(0, 120, 174));
+    }//GEN-LAST:event_jbtnMesasMouseExited
+
+    private void jbtnMesasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnMesasMouseEntered
+        jbtnMesas.setBackground(new Color(0, 120, 174));
+        jbtnMesas.setForeground(new java.awt.Color(255,255,255));
+    }//GEN-LAST:event_jbtnMesasMouseEntered
+
+    private void jbtnMesasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnMesasMouseClicked
+
+    }//GEN-LAST:event_jbtnMesasMouseClicked
 
      public void cerrar(){
     

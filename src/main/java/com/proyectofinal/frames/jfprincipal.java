@@ -51,9 +51,7 @@ public final class jfprincipal extends javax.swing.JFrame {
         if(emp.getTipoEmpleado().equals("CAJERO")){
             jbtnReporteVentas.setEnabled(false);
             jbtnReporteVentas.setVisible(false);
-        }else if(emp.getTipoEmpleado().equals("GERENTE")){ 
-            
-        }    
+        }  
     }
     
     /**
@@ -71,7 +69,7 @@ public final class jfprincipal extends javax.swing.JFrame {
         jbtnProductoDos = new javax.swing.JButton();
         jpUpMenuOptions = new javax.swing.JPanel();
         jbtnPerfilUsuario = new javax.swing.JButton();
-        jbtnMenu1 = new javax.swing.JButton();
+        jbtnPedidos = new javax.swing.JButton();
         jbtnReporteVentas = new javax.swing.JButton();
         jbtnRegistrarEditarEliminar = new javax.swing.JButton();
 
@@ -143,11 +141,11 @@ public final class jfprincipal extends javax.swing.JFrame {
             }
         });
 
-        jbtnMenu1.setBackground(new java.awt.Color(0, 100, 145));
-        jbtnMenu1.setBorder(null);
-        jbtnMenu1.setBorderPainted(false);
-        jbtnMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbtnMenu1.addActionListener(new java.awt.event.ActionListener() {
+        jbtnPedidos.setBackground(new java.awt.Color(0, 100, 145));
+        jbtnPedidos.setBorder(null);
+        jbtnPedidos.setBorderPainted(false);
+        jbtnPedidos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnPedidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnMenuActionPerformed(evt);
             }
@@ -184,7 +182,7 @@ public final class jfprincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jbtnRegistrarEditarEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jbtnMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jbtnPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 614, Short.MAX_VALUE)
                 .addComponent(jbtnReporteVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -195,7 +193,7 @@ public final class jfprincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jpUpMenuOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jbtnPerfilUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jbtnMenu1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbtnPedidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jbtnReporteVentas, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
                     .addComponent(jbtnRegistrarEditarEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(9, Short.MAX_VALUE))
@@ -219,10 +217,9 @@ public final class jfprincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnMenuActionPerformed
-
-        this.dispose();
-        jfClasificacionMenu cm = new jfClasificacionMenu(emp);
-        cm.setVisible(true);
+        Fm_Facturacion facturar = new Fm_Facturacion(emp);
+            this.dispose();
+                facturar.setVisible(true);
 
     }//GEN-LAST:event_jbtnMenuActionPerformed
 
@@ -261,6 +258,7 @@ public final class jfprincipal extends javax.swing.JFrame {
 
     private void jbtnReporteVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnReporteVentasActionPerformed
         JOptionPane.showMessageDialog(null, "ESTAN USANDO EL BOTÓN DE REPORTE DE VENTAS");
+            
     }//GEN-LAST:event_jbtnReporteVentasActionPerformed
 
     private void jbtnRegistrarEditarEliminarjbtnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnRegistrarEditarEliminarjbtnMenuActionPerformed
@@ -311,7 +309,7 @@ public final class jfprincipal extends javax.swing.JFrame {
                 jbtnProductoUno.setIcon(setIconoBtn("/01_lo_mas_comprado/01.png",jbtnProductoUno));
                     jbtnProductoDos.setIcon(setIconoBtn("/01_lo_mas_comprado/02.png",jbtnProductoDos));
                         jbtnProductoTres.setIcon(setIconoBtn("/01_lo_mas_comprado/03.png",jbtnProductoTres));
-                            jbtnMenu1.setIcon(setIconoBtn("/00_jf_principal/iconoMenu.png",jbtnMenu1));
+                            jbtnPedidos.setIcon(setIconoBtn("/00_jf_principal/pedidos.png",jbtnPedidos));
                                     jbtnReporteVentas.setIcon(setIconoBtn("/00_jf_principal/report.png",jbtnReporteVentas));
                                         
     }
@@ -355,7 +353,7 @@ public final class jfprincipal extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jbtnMenu1;
+    private javax.swing.JButton jbtnPedidos;
     private javax.swing.JButton jbtnPerfilUsuario;
     private javax.swing.JButton jbtnProductoDos;
     private javax.swing.JButton jbtnProductoTres;
