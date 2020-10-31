@@ -34,6 +34,8 @@ public final class jfprincipal extends javax.swing.JFrame {
     }
 
     public jfprincipal(empleado emp){
+        //
+        //
             this.emp = emp;    
                 initComponents();
                     setImagesToComponents();
@@ -51,7 +53,12 @@ public final class jfprincipal extends javax.swing.JFrame {
         if(emp.getTipoEmpleado().equals("CAJERO")){
             jbtnReporteVentas.setEnabled(false);
             jbtnReporteVentas.setVisible(false);
-        }  
+            jbtnRegistrarEditarEliminar.setEnabled(false); 
+            jbtnRegistrarEditarEliminar.setVisible(false); 
+        }else{
+            jbtnRegistrarEditarEliminar.setEnabled(false); 
+            jbtnRegistrarEditarEliminar.setVisible(false); 
+        }
     }
     
     /**
