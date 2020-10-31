@@ -34,8 +34,6 @@ public final class jfprincipal extends javax.swing.JFrame {
     }
 
     public jfprincipal(empleado emp){
-        //
-        //
             this.emp = emp;    
                 initComponents();
                     setImagesToComponents();
