@@ -5,16 +5,29 @@
  */
 package com.proyectofinal.frames;
 
+import com.proyectofinal.clases.conection;
 import com.proyectofinal.clases.empleado;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -262,8 +275,33 @@ public final class jfprincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtnProductoTresMouseExited
 
     private void jbtnReporteVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnReporteVentasActionPerformed
-        JOptionPane.showMessageDialog(null, "ESTAN USANDO EL BOTÓN DE REPORTE DE VENTAS");
-            
+        JOptionPane.showMessageDialog(null, "COMO ERES GERENTE PUEDES VER EL REPORTE DE VENTAS");
+        /*
+        try {
+            conection con = new conection();
+                Connection cn = con.getConection();
+                        String pathReport = "C:\\C_SERVIDOR\\src\\main\\resources\\reportes\\reporteVentas.jrxml";
+                            JasperReport report =  JasperCompileManager.compileReport(pathReport);
+                                //JasperReport reporte=(JasperReport) JRLoader.loadObject(getClass().getResource(pathReport));
+                                    System.out.println("llegué aquí 1");
+                                        JasperPrint pintarReporte = JasperFillManager.fillReport(report,null,cn);
+                                            System.out.println("llegué aquí 2");
+                                                String destFileName = "C:\\C_SERVIDOR\\src\\main\\resources\\reportes\\reporteVentas.pdf";
+                                                    JasperExportManager.exportReportToPdfFile(pintarReporte, destFileName);
+                            
+                            //null = parámetros enviados
+                                    //Vista del reporte
+                                        JasperViewer vista = new JasperViewer(pintarReporte,false);
+                                             vista.setDefaultCloseOperation(DISPOSE_ON_CLOSE); 
+                                                vista.setVisible(true); 
+                                    
+        } catch (ClassNotFoundException | SQLException e) {
+                    JOptionPane.showMessageDialog(null, "ERROR AL CARGAR EL REPORTE :/");
+        } catch (JRException ex) {
+            Logger.getLogger(jfprincipal.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, "ERROR AL CARGAR EL REPORTE :/");
+        }*/
+             
     }//GEN-LAST:event_jbtnReporteVentasActionPerformed
 
     private void jbtnRegistrarEditarEliminarjbtnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnRegistrarEditarEliminarjbtnMenuActionPerformed

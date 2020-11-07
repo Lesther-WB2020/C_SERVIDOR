@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteVentas" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5334d757-fba6-4614-8fd5-d5218a2e22ee">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT ID_Pedido,Producto_Detalles,Cantidad,Precio_Total,Correo_Cliente,Numero_Mesa FROM proyectofinaldb.pedidos WHERE Estado_Pedido='Entregado En Mesa';]]>
+	</queryString>
+	<field name="ID_Pedido" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Producto_Detalles" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Cantidad" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Precio_Total" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Correo_Cliente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Numero_Mesa" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="254" y="33" width="229" height="20" uuid="b629ebda-f54d-4c9d-a4f8-d70943fac700"/>
+				<text><![CDATA[PEDIDOS ENTREGADOS DE DOMINO´S PIZZA]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="752" height="79" uuid="8fbc2f14-aabe-4781-907d-77ee93967a7d"/>
+				<imageExpression><![CDATA["C:\\C_SERVIDOR\\src\\main\\resources\\00_jf_principal\\logoDominos.jpg"]]></imageExpression>
+			</image>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="540" y="33" width="100" height="20" uuid="465e0782-6dca-4a4c-8d81-8d6164a8007f"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement x="49" y="2" width="37" height="20" uuid="563a5402-d272-4c0d-9b28-86d8f805a790"/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="99" y="2" width="168" height="20" uuid="7eba7c3f-65ae-4b16-a83e-fa9cf8223d51"/>
+				<text><![CDATA[DETALLES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="292" y="2" width="54" height="20" uuid="62f6d8e0-adb9-407f-be49-ae9e3a9c5cc4"/>
+				<text><![CDATA[CANTIDAD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="379" y="2" width="82" height="20" uuid="c3974339-b3f6-424d-8e82-347532c57c56"/>
+				<text><![CDATA[PRECIO TOTAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="483" y="5" width="100" height="20" uuid="2e46d7ac-a121-40d5-add1-a4df30523fa8"/>
+				<text><![CDATA[CORREO CLIENTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="662" y="2" width="36" height="20" uuid="0798d42e-e0be-4869-ace0-e7dc98de4882"/>
+				<text><![CDATA[MESA]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement x="49" y="10" width="37" height="20" uuid="25c78e3d-d48b-4e04-a9c5-20d86ee029bb"/>
+				<textFieldExpression><![CDATA[$F{ID_Pedido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="99" y="10" width="168" height="20" uuid="1a5003c0-031e-4d71-b328-cfcf40f3f1a6"/>
+				<textFieldExpression><![CDATA[$F{Producto_Detalles}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="292" y="10" width="54" height="20" uuid="641a4599-13fd-4b9e-8893-bf9ee300abeb"/>
+				<textFieldExpression><![CDATA[$F{Cantidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="379" y="10" width="82" height="20" uuid="f13e3a2c-23c3-438c-9bf7-f1a7958ddc3d"/>
+				<textFieldExpression><![CDATA[$F{Precio_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="483" y="10" width="100" height="20" uuid="29ba829e-6ea0-4ee1-b590-09eeaf5cc063"/>
+				<textFieldExpression><![CDATA[$F{Correo_Cliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="662" y="10" width="81" height="20" uuid="237f22c1-aadd-458a-b7eb-4d55882f28b6"/>
+				<textFieldExpression><![CDATA[$F{Numero_Mesa}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="312" y="13" width="80" height="20" uuid="c070460e-b16f-44ef-a571-0287b24fd50e"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="405" y="13" width="40" height="20" uuid="e3876d8c-d0d5-4c4f-9ac9-92e6e23643a4"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
